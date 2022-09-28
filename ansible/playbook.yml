@@ -1,6 +1,3 @@
-#################
-# LEMP PLAYBOOK #
-#################
 ---
 - name: "Deployment application"
   hosts: "centos"
