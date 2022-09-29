@@ -23,7 +23,7 @@
   - geerlingguy.repo-epel
   - geerlingguy.repo-remi
   - psql
-  - geerlingguy.nginx
+  - nginxinc.nginx
   - { role: rvm.ruby,
       tags: ruby,
       rvm1_rubies: ['ruby-2.4.2'],
