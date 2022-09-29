@@ -14,7 +14,8 @@ Vagrant.configure("2") do |config|
     controlnode.vm.provision "shell", inline: <<-SHELL
       sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/#g' /etc/ssh/sshd_config
       service ssh restart
-      sudo apt update && sudo apt --assume-yes install ansible
+      sudo add-apt-repository -y ppa:ansible/ansible
+      sudo apt update && sudo apt -y install ansible sshpass
       chmod 600 /home/vagrant/.ssh/rsa_key
       chmod 644 /home/vagrant/.ssh/rsa_key.pub
     SHELL
@@ -30,10 +31,6 @@ Vagrant.configure("2") do |config|
     centosnode.vm.provision "shell", inline: <<-SHELL
       cat /home/vagrant/.ssh/rsa_key.pub >> /home/vagrant/.ssh/authorized_keys
     SHELL
-  end
-  config.vm.provider :virtualbox do |vb|  
-    vb.customize ["modifyvm", :id, "--cpus", 2]
-    vb.customize ["modifyvm", :id, "--memory", 2048]
   end
 
 end
