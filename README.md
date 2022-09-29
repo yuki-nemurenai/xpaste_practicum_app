@@ -1,5 +1,5 @@
 # xpaste_practicum_app
-### Create ***vagrant*** dir include ***ansible*** and ***keys*** dir:
+### Create ***vagrant*** dir including ***ansible*** and ***keys*** dir:
 ```
 mkdir vagrant
 midir vagrant\ansible
