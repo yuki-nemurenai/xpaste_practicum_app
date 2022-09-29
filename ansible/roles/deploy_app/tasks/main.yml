@@ -22,13 +22,14 @@
     dest: /apps/{{app_name}}
   when: not app_files.stat.exists
 
-- name: "Install app"
-  shell: |
-    source /etc/profile.d/rvm.sh
-    /usr/local/bin/bundle config build.nokogiri --use-system-libraries
-    /usr/local/bin/bundle install --clean --no-cache --without development --force
-  args:
+- name: "Install app with bundler module"
+  community.general.bundler:
+    state: present
+    deployment_mode: yes
     chdir: /apps/{{app_name}}
+    executable: /usr/local/bin/bundle
+    extra_args: --clean --no-cache
+    exclude_groups: development
 
 - name: "Check if we are having app directories"
   stat:
